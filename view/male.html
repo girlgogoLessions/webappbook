@@ -16,7 +16,7 @@
 			<div id="app" class="new-page channel-page">
 				<section class="channel-group main-card" v-for="section in items">
 					<div class="channel-group__header">
-						<h2 class="channel-group__title">{{ section.ad_name }}</h2>
+						<h2 class="channel-group__title" v-cloak>{{ section.ad_name }}</h2>
 					</div>
 					<ul class="book-list">
 						<li v-for="book in section.data.data">
@@ -26,12 +26,12 @@
 									<div class="u-tagRT"></div>
 								</div>
 								<div class="info">
-									<h3 class="title singel-line">{{ book.title }}</h3>
-									<p class="summary">{{ book.summary }}</p>
+									<h3 class="title singel-line" v-cloak>{{ book.title }}</h3>
+									<p class="summary" v-cloak>{{ book.summary }}</p>
 									<div class="wrap">
-										<div class="book-tag" v-for="tag in book.tags">{{ tag }}</div>
+										<div class="book-tag" v-for="tag in book.tags" v-cloak>{{ tag }}</div>
 									</div>
-									<p class="author singel-line">{{ book.authors }}</p>
+									<p class="author singel-line" v-cloak>{{ book.authors }}</p>
 								</div>
 							</div>
 						</li>

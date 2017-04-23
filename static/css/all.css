@@ -1,3 +1,6 @@
+[v-cloak] {
+	display: none;
+}
 .container-warp {
 	height: 100%;
 	overflow: hidden;
