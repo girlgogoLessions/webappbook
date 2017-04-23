@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/search.css">
+	<title>搜索</title>
+</head>
+<body>
+	<div id="root " style="width: 734px, overflow: hidden">
+		<% include include/common-header.html %>
+		<div class="container-scroll" style="width: 734px">
+			<div id="app_search" class="search">
+				<div class="top">
+					<a href="javascript: history.back()" class="top__back"></a>
+					<div id="search-input" class="search-input">
+						<b class="search-input__mi"></b>
+						<input type="text" value="" id="search_box" placeholder="输入书名／作者／关键字">
+						<div class="search-input__btn" @click="doSearch">搜索</div>
+					</div>
+				</div>
+				<div class="top__bd" v-show="condition">
+					<div>
+						<ul class="m-tag -color search-tag">
+							<li class="u-tag" id="Tag__128">我的绝世美女老婆</li>
+							<li class="u-tag" id="Tag__129">复仇千金</li>
+							<li class="u-tag" id="Tag__130">盗墓笔记</li>
+							<li class="u-tag" id="Tag__131">豪门小老婆</li>
+							<li class="u-tag" id="Tag__132">庶女</li>
+							<li class="u-tag" id="Tag__133">神医</li>
+							<li class="u-tag" id="Tag__134">魔兽</li>
+							<li class="u-tag" id="Tag__135">我的老婆是双胞胎</li>
+						</ul>
+					</div>
+				</div>
+				<div class="top__bd" v-show="!condition">
+					<ul class="book-list">
+						<li v-for="item in search">
+							<div class="u-book">
+								<div class="cnt">
+									<div class="book-cover">
+										<img :src="item.cover" :alt="item.title">
+										<div class="u-tagRT"></div>
+									</div>
+									<div class="info">
+										<h3 class="title single-line">{{ item.title }}</h3>
+										<p class="summary">{{ item.intro }}</p>
+										<div class="wrap">
+											<p class="author single-line">
+												<span>{{ item.authors }}</span>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="listView" v-show="empty">
+					<div class="listView__empty">
+						<p class="u-tip">没有相应的搜索结果</p>
+					</div>
+					<div class="ListView__complete"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/static/script/vue.js"></script>
+<script src="/static/script/zepto.js"></script>
+<script src="/static/script/pages/search.js"></script>
+</html>

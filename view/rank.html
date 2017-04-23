@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/rank.css">
+	<title>排行榜</title>
+</head>
+<body>
+	<div id="root " style="width: 734px, overflow: hidden">
+		<% include include/common-header.html %>
+		<div class="container-scroll" style="width: 734px">
+			<div id="app" class="new-page rank-page">
+				<ul class="original-rank-list">
+					<li class="original-rank-list__item" v-for="(item, index) in items" v-if="index > 18">
+						<img :src="item.cover"  class="original-rank-list__img">
+						<div class="original-rank-list__content">
+							<p class="original-rank-list__page" v-for="(book, index) in item.description">
+								<span class="original-rank-list__num">{{ index + 1 }}</span>
+								{{ book }}
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/static/script/vue.js"></script>
+<script src="/static/script/zepto.js"></script>
+<script src="/static/script/pages/rank.js"></script>
+</html>
