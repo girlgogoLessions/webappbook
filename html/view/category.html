@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>女生频道</title>
+</head>
+<body>
+	<div id="root " :style="'width: ' + screen_width + 'px, overflow: hidden'">
+		<% include include/common-header.html %>
+		<div class="container-scroll" :style="'width: ' + screen_width + 'px'">
+			<div id="app" class="new-page cate-page">
+				<section class="m-cat-male">
+					<div class="u-title">
+						<h1>网文男频</h1>
+					</div>
+					<ul class="u-list-2col">
+						<li v-for="item in male">
+							<div class="u-cat-item" :style="{backgroundImage: 'url(' + item.new_image + ')'}">
+								<h3 v-cloak>{{ item.label }}</h3>
+								<p class="num" v-cloak>{{ item.fiction_count }}</p>
+							</div>
+						</li>
+					</ul>
+				</section>
+				<section class="m-cat-female">
+					<div class="u-title">
+						<h1>网文女频</h1>
+					</div>
+					<ul class="u-list-2col">
+						<li v-for="item in female">
+							<div class="u-cat-item" :style="'backgroundImage: url(' + item.new_image + ')'">
+								<h3 v-cloak>{{ item.label }}</h3>
+								<p class="num" v-cloak>{{ item.fiction_count }}</p>
+							</div>
+						</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

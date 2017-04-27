@@ -1,0 +1,36 @@
+import Vue from 'vue'
+import $ from 'jquery'
+import '../../css/reset.css'
+import '../../css/all.css'
+import '../../css/search.css'
+
+let windowWidth = $(window).width();
+	if (windowWidth < 320) {
+		windowWidth = 320
+	}
+new Vue ({
+	el: '#app_search',
+	data: {
+		screen_width: windowWidth,
+		search: [],
+		condition: true,
+		empty: false
+	},
+	methods: {
+		doSearch: function (e) {
+			var keyword = $('#search_box').val()
+			var _this = this;
+			$.get('/ajax/search', {
+				keyword: keyword
+			}, function (d) {
+				_this.condition = false
+				_this.search = d.items
+				if(_this.search.length === 0) {
+					_this.empty = true
+				} else {
+					_this.empty = false
+				}
+			}, 'json')
+		}
+	}
+})

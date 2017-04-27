@@ -2,14 +2,14 @@ const Koa = require('koa')
 const route = require('koa-route')
 const app = new Koa()
 const views = require('co-views')
-const render = views('./view',{
+const render = views('./dist/view',{
  map: { html: 'ejs'}
 })
 const koa_static = require('koa-static-server')
-const service = require ('./service/webAppService.js')
+const service = require ('./nodejs/service/webAppService.js')
 
 app.use(koa_static({
- rootDir: './static/',
+ rootDir: './dist/static/',
  rootPath: '/static/',
  maxage: 0
 }))
