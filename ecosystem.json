@@ -1,0 +1,29 @@
+{
+  "apps": [
+    {
+      "name": "webappbook", // 应用名称
+      "script": "app.js", // 应用入口
+      "env": {// 启动应用时的环境变量
+        "COMMON_VARIABLE": true
+      },
+      "env_production": {// 生产环境启动应用时的环境变量
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": { // 任务名
+      "user": "saber", // 生产服务器账号
+      "host": ["47.93.14.9"], // 生产服务器地址
+      "port": "2012", // 服务器 SSH 端口
+      "ref": "origin/master", // 分支
+      "repo": "https://github.com/girlgogoLessions/webappbook.git", // 仓库地址
+      "path": "/www/webappbook/production", // 应用部署路径(绝对路径, 要确保该路径对 imooc_manager 可读可写可执行)
+      "ssh_options": "StrictHostKeyChecking=no",
+			"post-deploy": "npm install --registry=https://registry.npm.taobao.org && webpack && pm2 startOrRestart ecosystem.json --env production",
+      "env": { // 环境变量设置
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
