@@ -23,7 +23,7 @@ const vm = new Vue({
 		free: [],
 		topic: [],
 		duration: 0,
-		position: 0,
+		position: '0px',
 		header_position: 0,
 		header_duration:0,
 		tab_1_class: 'Swipe-tab__on',
@@ -52,7 +52,7 @@ const vm = new Vue({
 				this.tab_1_class = 'Swipe-tab__on'
 				this.tab_2_class = ''
 			} else {
-				this.position = (-windowWidth)
+				this.position = '-50%'
 				this.header_position = index_header_tab_width
 				this.tab_2_class = 'Swipe-tab__on'
 				this.tab_1_class = ''
