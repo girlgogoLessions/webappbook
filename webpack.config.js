@@ -5,11 +5,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
 	context: path.resolve(__dirname,'./html'),
-	output: {
-		path: path.resolve(__dirname, './dist'),
-		publicPath: '/',
-		filename: '[name].js'
-	},
 	entry: {
 		'static/script/pages/book': './static/script/pages/book.js',
 		'static/script/pages/category': './static/script/pages/category.js',
@@ -19,6 +14,11 @@ module.exports = {
 		'static/script/pages/rank': './static/script/pages/rank.js',
 		'static/script/pages/search': './static/script/pages/search.js',
 		'vendor': ['vue','jquery']
+	},
+	output: {
+		path: path.resolve(__dirname, './dist'),
+		publicPath: '/',
+		filename: '[name].js'
 	},
 	module: {
 		rules: [
@@ -102,7 +102,7 @@ module.exports = {
 		]),
 		new ExtractTextPlugin({
 			filename:  function (getPath) {
-				return getPath('static/css/[name].css').replace('css/js', 'css');
+				return getPath('static/css/[name].css').replace('css/js', 'css')
 			},
 			allChunks: true
 		})
